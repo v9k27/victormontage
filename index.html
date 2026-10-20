@@ -9,7 +9,13 @@
 <meta property="og:title" content="Victor Auriol · Monteur vidéo">
 <meta property="og:description" content="Victor Auriol, monteur vidéo : films immobiliers et institutionnels, vidéos YouTube, reels poker. Tarifs et contact.">
 <meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://v9k27.github.io/victormontage/">
+<meta property="og:image" content="https://v9k27.github.io/victormontage/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Victor Auriol, monteur vidéo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://v9k27.github.io/victormontage/og.png">
 <meta name="theme-color" content="#14161c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314161c'/%3E%3Crect x='4' y='13' width='8' height='6' rx='1.5' fill='%23c2a574'/%3E%3Crect x='13' y='13' width='7' height='6' rx='1.5' fill='%23ffd60a'/%3E%3Crect x='21' y='13' width='7' height='6' rx='1.5' fill='%233aae70'/%3E%3Crect x='16' y='6' width='2' height='20' fill='%235b9bff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,7 +151,7 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .inst-facts dd{margin:6px 0 0;font-family:var(--f-serif);font-size:20px}
 .inst-cta{justify-self:start;font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;padding-bottom:6px;border-bottom:1px solid var(--in-gold);transition:color .2s}
 .inst-cta:hover{color:var(--in-gold)}
-@media (max-width:760px){.inst-feature{grid-template-columns:minmax(0,1fr)}.inst-film{max-width:300px}}
+@media (max-width:760px){.inst-feature{grid-template-columns:minmax(0,1fr)}.inst-film{width:100%;max-width:300px;justify-self:center}}
 
 /* ============ 3. YOUTUBE : vif ============ */
 .yt{background-color:var(--yt-bg);background-image:radial-gradient(rgba(20,20,20,.09) 1.3px, transparent 1.7px);background-size:18px 18px;color:var(--yt-ink);overflow:hidden}
@@ -281,6 +287,7 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .end-label{font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tl-muted)}
 .end h2{margin:0;font-family:var(--f-tl);font-weight:800;font-size:clamp(44px, 8.4vw, 116px);line-height:.92;letter-spacing:-.035em;text-wrap:balance}
 .end-lede{margin:0;max-width:52ch;font-size:18px;color:var(--tl-muted)}
+.nw{white-space:nowrap}
 .mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding-top:22px;margin-top:8px;border-top:1px solid var(--tl-line)}
 .mail{min-width:0;font-family:var(--f-tl);font-weight:600;font-size:clamp(22px, 4.2vw, 44px);overflow-wrap:anywhere;user-select:all}
 .actions{display:flex;flex-wrap:wrap;gap:10px}
@@ -552,7 +559,7 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
     </div>
     <span class="end-label">Fin de séquence</span>
     <h2>Un projet à monter&nbsp;?</h2>
-    <p class="end-lede">Un film pour votre agence, une vidéo YouTube ou une série de reels : écrivez-moi.</p>
+    <p class="end-lede">Un film pour votre agence, une vidéo YouTube ou une série de reels&nbsp;: <span class="nw">écrivez-moi.</span></p>
     <div class="mailbox">
       <span class="mail" id="mail">victorauriol@laposte.net</span>
       <div class="actions">
@@ -591,7 +598,7 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
 (function(){
   // Miniatures YouTube : repli sur la version standard si la version HD n'existe pas
   [].slice.call(document.querySelectorAll('.thumb img[data-fallback]')).forEach(function(img){
-    function useFallback(){ if(img.src!==img.dataset.fallback){ img.src=img.dataset.fallback } }
+    function useFallback(){ if(img.src!==img.dataset.fallback){ img.src=img.dataset.fallback } else { img.remove() } }
     img.addEventListener('load',function(){ if(img.naturalWidth&&img.naturalWidth<200){ useFallback() } });
     img.addEventListener('error',useFallback);
     if(img.complete&&img.naturalWidth&&img.naturalWidth<200){ useFallback() }
