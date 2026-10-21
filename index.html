@@ -322,6 +322,17 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .btn.solid:hover{background:var(--tl-fg);border-color:var(--tl-fg)}
 .foot{background:var(--tl-bg)}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:18px 92px;border-top:1px solid var(--tl-line);font-family:var(--f-mono);font-size:11px;color:var(--tl-muted)}
+.legal{flex-basis:100%}
+.legal summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none}
+.legal summary span,.legal-body a{text-decoration:underline;text-decoration-color:var(--tl-line);text-underline-offset:4px}
+.legal summary::-webkit-details-marker{display:none}
+.legal summary::after{content:"+"}
+.legal[open] summary::after{content:"\2212"}
+.legal summary:hover,.legal[open] summary{color:var(--tl-fg)}
+.legal summary:focus-visible{outline:2px solid var(--tl-play);outline-offset:4px;border-radius:2px}
+.legal-body{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 230px), 1fr));gap:18px 32px;margin-top:18px;font-family:var(--f-body);font-size:13px;line-height:1.65;color:var(--tl-muted)}
+.legal-body p{margin:0}
+.legal-body b{display:block;margin-bottom:4px;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--tl-fg)}
 
 /* ============ Version site : vraies miniatures et lecteurs ============ */
 button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
@@ -595,7 +606,16 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
     </div>
   </div>
 </section>
-<footer class="foot"><div class="wrap"><span>© 2026 Victor Auriol</span><span>Monteur vidéo</span></div></footer>
+<footer class="foot"><div class="wrap"><span>© 2026 Victor Auriol</span><span>Monteur vidéo</span>
+  <details class="legal" id="mentions-legales">
+    <summary><span>Mentions légales</span></summary>
+    <div class="legal-body">
+      <p><b>Éditeur</b>Victor Auriol EI (entrepreneur individuel)<br>04 rue Jean Martin, 13005 Marseille<br><a href="tel:+33652864365">06&nbsp;52&nbsp;86&nbsp;43&nbsp;65</a><br>victorauriol@laposte.net<br>SIRET 933&nbsp;010&nbsp;340&nbsp;00018</p>
+      <p><b>Directeur de la publication</b>Victor Auriol</p>
+      <p><b>Hébergeur</b>GitHub, Inc.<br>88 Colin P. Kelly Jr. Street<br>San Francisco, CA 94107, États-Unis<br>+1&nbsp;877&nbsp;448&nbsp;4820</p>
+    </div>
+  </details>
+</div></footer>
 
 <!-- Timeline flottante, visible dès que l'ouverture est passée -->
 <div class="dock-wrap">
