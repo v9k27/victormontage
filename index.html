@@ -81,6 +81,8 @@ a{color:inherit}
 .caret{display:inline-block;width:.07em;height:.74em;margin-left:.08em;background:var(--tl-play);animation:caret 1.1s steps(1) infinite}
 @keyframes caret{50%{opacity:0}}
 .vsub{margin:0;font-weight:600;font-size:clamp(14px, 1.6vw, 19px);color:var(--tl-fg);opacity:.85}
+.vsub span{white-space:nowrap}
+.burn{display:none}
 
 .meta-body{flex:1;display:flex;flex-direction:column;gap:20px;padding:18px 18px 20px}
 .meta-lede{margin:0;font-size:15px;line-height:1.65}
@@ -90,6 +92,22 @@ a{color:inherit}
 .meta-list dd{margin:0;font-size:14px;font-weight:600;overflow-wrap:anywhere}
 .meta-list a{color:var(--tl-play);text-decoration:none}
 .meta-list a:hover{text-decoration:underline}
+/* Sur téléphone, l'ouverture garde l'essentiel : le moniteur avec le nom, la phrase d'accroche et la bande de chapitres. Barres d'outils, pistes audio et règle restent sur grand écran. */
+@media (max-width:600px){
+  .topbar{padding-block:14px 18px}
+  .desk{grid-template-areas:"mon" "meta" "tl";gap:24px;padding-bottom:56px}
+  .mon .bar{display:none}
+  .viewer{aspect-ratio:auto;margin:0;border-radius:0;padding:56px 22px 60px;gap:14px}
+  .viewer::before{display:none}
+  .kicker{font-size:11px}
+  .viewer h1{font-size:clamp(52px, 17.5vw, 72px)}
+  .vsub{font-size:16px;line-height:1.45}
+  .burn{display:block;position:absolute;right:14px;bottom:12px;font-size:11px;letter-spacing:.04em}
+  .meta-panel{background:none;border:0;border-radius:0}
+  .meta-panel .bar,.meta-list,.lede-more{display:none}
+  .meta-body{padding:0 2px}
+  .meta-lede{font-size:18px;line-height:1.55;text-wrap:pretty}
+}
 
 .timeline{--th:46px}
 .tl-grid{position:relative;padding:4px 0 8px}
@@ -111,7 +129,14 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .clip.au canvas{position:absolute;inset:0;width:100%;height:100%}
 .playhead{position:absolute;top:0;bottom:0;left:calc(var(--th) + (100% - var(--th)) * var(--p, 0));width:2px;margin-left:-1px;background:var(--tl-play);pointer-events:none;z-index:3}
 .playhead::before{content:"";position:absolute;top:0;left:50%;width:14px;height:16px;transform:translateX(-50%);background:var(--tl-play);clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%)}
-@media (max-width:600px){.timeline{--th:30px}.clip{padding:0 4px;font-size:10.5px}.hide-sm,.rl.odd{display:none}}
+@media (max-width:600px){
+  .timeline{--th:0px;background:none;border:0;border-radius:0;overflow:visible}
+  .timeline .bar,.row.ruler,.row.audio,.th{display:none}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .tl-grid{padding:18px 0 0}
+  .lane{height:40px;border-bottom:0}
+  .clip{top:0;bottom:0;padding:0 2px;font-size:clamp(9px, calc(3.5vw - 1.75px), 11px);line-height:40px;text-align:center}
+}
 
 /* Timeline flottante : reste en bas de l'écran une fois l'ouverture passée */
 .dock-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;pointer-events:none;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
@@ -121,7 +146,7 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .dock-lane{position:relative;height:36px;border-radius:5px;background-color:var(--tl-bg);background-image:linear-gradient(90deg, #3c4250 0 1px, transparent 1px);background-size:calc(100% / 30) 4px;background-repeat:repeat-x;background-position:0 0}
 .dock-head{position:absolute;top:-3px;bottom:-3px;left:calc(var(--p, 0) * 100%);width:2px;margin-left:-1px;background:var(--tl-play);pointer-events:none;z-index:2}
 .dock-head::before{content:"";position:absolute;top:0;left:50%;width:10px;height:9px;transform:translateX(-50%);background:var(--tl-play);clip-path:polygon(0 0,100% 0,50% 100%)}
-@media (max-width:600px){.dock{grid-template-columns:minmax(0,1fr);padding:6px}.dock-tc{display:none}}
+@media (max-width:600px){.dock{grid-template-columns:minmax(0,1fr);padding:5px}.dock-tc{display:none}.dock-lane{height:34px}.dock .clip{top:4px;bottom:4px;padding:0 2px;font-size:clamp(9px, calc(3.5vw - 2.2px), 10.5px);line-height:26px;text-align:center}}
 
 /* ============ 2. INSTITUTIONNEL : raffiné ============ */
 .inst{background:var(--in-bg);color:var(--in-fg);border-top:1px solid var(--in-line)}
@@ -348,7 +373,8 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
         <div class="viewer">
           <p class="kicker">Monteur vidéo</p>
           <h1>Victor<br>Auriol<span class="caret" aria-hidden="true"></span></h1>
-          <p class="vsub">Films immobiliers · YouTube · Reels poker</p>
+          <p class="vsub"><span>Films immobiliers</span>&nbsp;· <span>YouTube</span>&nbsp;· <span>Reels poker</span></p>
+          <span class="tc burn" data-tc aria-hidden="true">00:00:00:00</span>
         </div>
         <div class="bar bottom"><span class="tc" data-tc>00:00:00:00</span><span>1920 × 1080</span></div>
       </div>
@@ -356,7 +382,7 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
       <aside class="panel meta-panel">
         <div class="bar top"><span><b>Métadonnées</b></span><span>Intro</span></div>
         <div class="meta-body">
-          <p class="meta-lede">Je monte des vidéos qui gardent leur public jusqu'à la dernière image. Films pour l'immobilier, vidéos YouTube et formats courts, notamment du poker.</p>
+          <p class="meta-lede">Je monte des vidéos qui gardent leur public jusqu'à la dernière image.<span class="lede-more"> Films pour l'immobilier, vidéos YouTube et formats courts, notamment du poker.</span></p>
           <dl class="meta-list">
             <div><dt>Nom</dt><dd>Victor Auriol</dd></div>
             <div><dt>Métier</dt><dd>Monteur vidéo</dd></div>
