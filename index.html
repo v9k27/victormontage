@@ -147,7 +147,7 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .dock-head::before{content:"";position:absolute;top:0;left:50%;width:10px;height:9px;transform:translateX(-50%);background:var(--tl-play);clip-path:polygon(0 0,100% 0,50% 100%)}
 @media (max-width:600px){.dock{grid-template-columns:minmax(0,1fr);padding:5px}.dock-tc{display:none}.dock-lane{height:34px}.dock .clip{top:4px;bottom:4px;padding:0 2px;font-size:clamp(9px, calc(3.5vw - 2.2px), 10.5px);line-height:26px;text-align:center}}
 
-/* ============ 2. INSTITUTIONNEL : générique de cinéma ============ */
+/* ============ 2. INSTITUTIONNEL : générique de cinéma, porte qui s'ouvre sur le film ============ */
 /* Direction B : générique de cinéma (sombre). Bandes noires du format cinéma, carton-titre centré,
    crédits de part et d'autre d'un écran vertical éclairé (carton-titre du film), description en sous-titres. */
 .inst{
@@ -192,31 +192,62 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .inst .in-credits dt{font-size:11px;font-weight:500;letter-spacing:.44em;text-transform:uppercase;color:var(--ib-champ)}
 .inst .in-credits--l dt{margin-right:-.44em}
 .inst .in-credits dd{margin:0;font-family:var(--ib-serif);font-weight:400;font-size:clamp(26px, 2.5vw, 36px);line-height:1.08;color:var(--ib-ivory)}
+.inst .in-dd-sub{display:block;margin-top:6px;font-style:italic;font-size:.62em;line-height:1.2;color:var(--ib-muted)}
+@media (min-width:761px){.inst .in-credits dd{position:relative}.inst .in-dd-sub{position:absolute;top:100%;right:0;white-space:nowrap}}
 
 /* L'écran vertical : une pièce vide baignée de soleil, prête à recevoir une vraie image (img.in-still) */
 .inst .inst-film{grid-area:film;position:relative;display:block;text-decoration:none;color:var(--ib-ivory);border-radius:3px}
 .inst .inst-film::after{content:"";position:absolute;left:8%;right:8%;bottom:-40px;height:40px;background:radial-gradient(closest-side, rgba(240,204,152,.30), transparent);filter:blur(10px);pointer-events:none}
-.inst .in-screen{position:relative;display:block;aspect-ratio:9/16;overflow:hidden;border-radius:3px;background:radial-gradient(90% 55% at 50% 34%, #3b3129 0%, #241e19 46%, #110e0b 100%);
+.inst .in-screen{position:relative;display:block;aspect-ratio:9/16;overflow:hidden;border-radius:3px;background:linear-gradient(180deg, #2b251f 0%, #231e1a 60%, #1d1915 88%, #120f0c 88.2%, #0b0907 100%);
   box-shadow:0 0 0 1px rgba(255,236,206,.14), 0 50px 100px -40px #000, 0 0 70px 0 rgba(236,196,140,.20), 0 0 200px 24px rgba(236,196,140,.08);
   transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s}
-/* Carton-titre du film, affiché tant qu'il n'y a pas de vraie image */
-.inst .in-card{position:absolute;left:10%;right:10%;top:36%;transform:translateY(-50%);display:grid;justify-items:center;gap:14px;text-align:center}
-.inst .in-card-kicker{padding-left:.42em;font-size:10px;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:var(--ib-champ)}
-.inst .in-card-name{font-family:var(--ib-serif);font-style:italic;font-weight:500;font-size:clamp(30px, 2.9vw, 38px);line-height:1.02;color:var(--ib-ivory);text-wrap:balance}
-.inst .in-card-rule{width:34px;height:1px;background:rgba(220,200,164,.6)}
-.inst .in-card-meta{padding-left:.32em;font-size:10px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--ib-muted)}
 .inst .in-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.inst .in-still ~ .in-card{display:none}
 .inst .in-grain{position:absolute;inset:-20%;background-image:var(--ib-grain);background-size:180px;opacity:.22;mix-blend-mode:overlay;pointer-events:none;animation:in-grain .9s steps(3) infinite}
 @keyframes in-grain{0%{transform:translate(0,0)}33%{transform:translate(-4%,3%)}66%{transform:translate(3%,-2%)}100%{transform:translate(0,0)}}
-.inst .in-vignette{position:absolute;inset:0;background:linear-gradient(0deg, rgba(0,0,0,.42), rgba(0,0,0,0) 42%), radial-gradient(130% 85% at 50% 42%, transparent 50%, rgba(0,0,0,.55) 100%);pointer-events:none}
-.inst .in-play{position:absolute;left:0;right:0;top:73%;display:grid;justify-items:center;gap:14px}
-.inst .in-play-ico{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;border:1px solid rgba(242,236,225,.75);background:rgba(12,9,6,.34);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s, color .3s, transform .3s}
-.inst .in-play-ico svg{width:20px;height:20px;margin-left:3px}
-.inst .in-play-txt{padding-left:.36em;font-size:11px;font-weight:500;letter-spacing:.36em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.inst .in-vignette{position:absolute;inset:0;background:radial-gradient(130% 85% at 50% 45%, transparent 55%, rgba(0,0,0,.5) 100%);pointer-events:none}
 .inst .inst-film:hover .in-screen{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,236,206,.26), 0 60px 110px -40px #000, 0 0 90px 4px rgba(236,196,140,.28), 0 0 240px 34px rgba(236,196,140,.1)}
-.inst .inst-film:hover .in-play-ico{background:var(--ib-ivory);color:#15110c;transform:scale(1.06)}
 .inst .inst-film:focus-visible{outline-offset:10px;border-radius:6px}
+
+/* La porte : fermée, un filet de lumière passe dessous et sur le côté ; au clic elle s'ouvre sur le film */
+.inst .in-sign{position:absolute;left:0;right:0;top:4.2%;display:flex;justify-content:center;align-items:center;gap:10px;font-family:var(--ib-serif);font-style:italic;font-weight:500;font-size:clamp(14px, 1.25vw, 17px);line-height:1;color:var(--ib-champ);white-space:nowrap}
+.inst .in-sign::before,.inst .in-sign::after{content:"";width:18px;height:1px;background:rgba(220,200,164,.45)}
+.inst .in-doorway{position:absolute;left:16%;right:16%;top:12.5%;bottom:12%;perspective:1100px;perspective-origin:50% 45%}
+.inst .in-doorway::before{content:"";position:absolute;left:-7px;right:-7px;top:-7px;bottom:0;border:6px solid #3b3129;border-bottom:0;box-shadow:0 0 0 1px rgba(255,226,182,.14), inset 0 0 0 1px rgba(0,0,0,.5), -8px 6px 22px -4px rgba(0,0,0,.55);pointer-events:none}
+.inst .in-room{position:absolute;inset:0;overflow:hidden;background:
+  linear-gradient(180deg, transparent 74%, rgba(150,92,44,.55) 74.4%, rgba(206,146,86,.35) 100%),
+  radial-gradient(110% 70% at 72% 26%, #fff3dc 0%, #f6d6a2 30%, #e2aa68 62%, #9c6434 100%);transition:filter 1s ease}
+.inst .in-room .in-still{z-index:0}
+.inst .in-leaf{position:absolute;left:0;top:0;width:calc(100% - 3px);height:calc(100% - 3px);transform-origin:0 50%;transform:rotateY(0deg);
+  background:linear-gradient(90deg, #322a23 0%, #2b241e 55%, #241e19 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,230,190,.07), inset -10px 0 18px -6px rgba(0,0,0,.45);
+  transition:transform 1.15s cubic-bezier(.62,.04,.24,1), filter 1.15s ease}
+.inst .in-panel{position:absolute;left:15%;right:15%;border-radius:1px;background:linear-gradient(180deg, rgba(255,236,206,.04), rgba(0,0,0,.14));
+  box-shadow:0 0 0 1px rgba(255,230,190,.07), inset 0 0 0 1px rgba(0,0,0,.5), inset 0 0 0 5px rgba(255,232,196,.045), inset 0 0 0 6px rgba(0,0,0,.32)}
+.inst .in-panel--top{top:7%;height:50%}
+.inst .in-panel--bot{top:63%;bottom:7%}
+.inst .in-knob{position:absolute;right:8%;top:55%;width:10%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 30%, #fff0c9 0, #d9ab62 34%, #8f6130 72%, #4b3016 100%);box-shadow:0 3px 5px rgba(0,0,0,.6)}
+.inst .in-leak{position:absolute;top:0;bottom:-2px;right:-5px;width:12px;background:linear-gradient(180deg, rgba(255,214,150,.15), rgba(255,214,150,.7) 70%, rgba(255,214,150,.9));filter:blur(5px);opacity:.75;pointer-events:none;transition:opacity .6s;animation:in-leak 3.2s ease-in-out infinite alternate}
+.inst .in-leak--floor{top:auto;left:0;right:0;bottom:-6px;width:auto;height:10px;background:rgba(255,212,150,.85)}
+@keyframes in-leak{from{opacity:.45}to{opacity:.85}}
+.inst .in-spill{position:absolute;left:0;right:0;top:88%;bottom:0;background:linear-gradient(180deg, rgba(255,206,140,.85), rgba(236,164,92,.28) 62%, rgba(236,164,92,0));clip-path:polygon(16% 0, 84% 0, 106% 100%, -6% 100%);opacity:.12;transition:opacity 1s ease .15s;pointer-events:none}
+.inst .in-play{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.88);transition:opacity .5s ease, transform .5s ease}
+.inst .in-play-ico{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:rgba(24,16,9,.82);color:var(--ib-ivory);box-shadow:0 8px 24px rgba(60,30,8,.35);transition:background .3s, color .3s, transform .3s}
+.inst .in-play-ico svg{width:20px;height:20px;margin-left:3px}
+.inst .in-hint{display:grid;justify-items:center;margin-top:26px;padding-left:.36em;font-size:11px;font-weight:500;letter-spacing:.36em;text-transform:uppercase;color:var(--ib-ivory)}
+.inst .in-hint > span{grid-area:1/1;transition:opacity .4s}
+.inst .in-hint-open{opacity:0}
+/* Survol : la porte s'entrouvre */
+.inst .inst-film:hover .in-leaf,.inst .inst-film:focus-visible .in-leaf{transform:rotateY(16deg)}
+.inst .inst-film:hover .in-spill,.inst .inst-film:focus-visible .in-spill{opacity:.4}
+/* Ouverte */
+.inst .inst-film.is-open .in-leaf{transform:rotateY(74deg);filter:brightness(.8)}
+.inst .inst-film.is-open .in-room{filter:brightness(1.06)}
+.inst .inst-film.is-open .in-leak{opacity:0;animation:none}
+.inst .inst-film.is-open .in-spill{opacity:1}
+.inst .inst-film.is-open .in-play{opacity:1;transform:none;transition-delay:.6s}
+.inst .inst-film.is-open .in-hint-closed{opacity:0}
+.inst .inst-film.is-open .in-hint-open{opacity:1;transition-delay:.5s}
+.inst .inst-film.is-open:hover .in-play-ico{background:var(--ib-ivory);color:#15110c;transform:scale(1.06)}
 
 /* Sous-titres dans la bande du bas */
 .inst .in-sub{max-width:60em;margin:0 auto;padding-block:clamp(26px, 3vw, 40px);text-align:center;font-size:clamp(15px, 1.25vw, 18px);line-height:1.7;color:var(--ib-ivory)}
@@ -238,7 +269,9 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
   .inst .in-credits--l, .inst .in-credits--r{text-align:left}
   .inst .in-credits dt, .inst .in-credits--l dt{margin:0;text-align:right;font-size:10px;letter-spacing:.3em}
   .inst .in-credits dd{font-size:20px}
-  .inst .in-play-ico{width:56px;height:56px}
+  .inst .in-play-ico{width:52px;height:52px}
+  .inst .in-hint{margin-top:22px;font-size:10px}
+  .inst .in-sign{font-size:14px}
   .inst .in-sub{font-size:15px;line-height:1.6}
   .inst .in-sub span + span{margin-top:10px}
 }
@@ -246,8 +279,8 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
   .inst .in-credits div{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:12px}
 }
 @media (prefers-reduced-motion: reduce){
-  .inst .in-grain, .inst .in-scene::before{animation:none}
-  .inst .in-screen, .inst .in-play-ico{transition:none}
+  .inst .in-grain, .inst .in-scene::before, .inst .in-leak{animation:none}
+  .inst .in-screen, .inst .in-play-ico, .inst .in-leaf, .inst .in-room, .inst .in-spill, .inst .in-play, .inst .in-hint > span{transition:none}
 }
 
 /* ============ 3. YOUTUBE : vif ============ */
@@ -326,7 +359,6 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .play{position:absolute;left:50%;bottom:28%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--f-cond);font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--pk-ink);color:var(--pk-cream);transition:background .2s}
 .play::before{content:"";border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
 .card:hover .play{background:var(--pk-red)}
-.pk-note{margin:30px 0 0;font-family:var(--f-cond);font-weight:600;font-size:16px;letter-spacing:.06em;color:var(--pk-gold)}
 .hud{display:inline-flex;flex-wrap:wrap;justify-content:center;margin:28px 0 0;background:rgba(4,14,9,.62);border-top:2px solid var(--pk-gold);border-radius:4px;overflow:hidden}
 .hud div{display:grid;gap:2px;padding:10px 20px;text-align:left}
 .hud div + div{border-left:1px solid rgba(246,241,228,.12)}
@@ -519,16 +551,24 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
       <div class="in-scene">
         <dl class="in-credits in-credits--l">
           <div><dt>Montage</dt><dd>Victor Auriol</dd></div>
-          <div><dt>Client</dt><dd>Axo Côté&nbsp;Sud</dd></div>
+          <div><dt>Client</dt><dd>Axo Côté&nbsp;Sud<small class="in-dd-sub">Agence immobilière</small></dd></div>
         </dl>
-        <a class="inst-film" data-ig aria-haspopup="dialog" href="https://www.instagram.com/reel/DeUkf5hNjVY/" target="_blank" rel="noopener" aria-label="Regarder le film immobilier sur Instagram">
+        <a class="inst-film" data-ig aria-haspopup="dialog" href="https://www.instagram.com/reel/DeUkf5hNjVY/" target="_blank" rel="noopener" aria-label="Ouvrir la porte et regarder le film immobilier">
           <span class="in-screen">
-            <!-- <img class="in-still" src="film-still.jpg" alt=""> -->
-            <span class="in-card" aria-hidden="true"><span class="in-card-kicker">Film immobilier</span><span class="in-card-name">Axo Côté&nbsp;Sud</span><span class="in-card-rule"></span><span class="in-card-meta">Vertical · 9:16</span></span>
+            <span class="in-sign" aria-hidden="true">Axo Côté&nbsp;Sud</span>
+            <span class="in-spill" aria-hidden="true"></span>
+            <span class="in-doorway" aria-hidden="true">
+              <span class="in-room">
+                <!-- <img class="in-still" src="film-still.jpg" alt=""> -->
+                <span class="in-play"><span class="in-play-ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></span></span>
+              </span>
+              <span class="in-leak"></span><span class="in-leak in-leak--floor"></span>
+              <span class="in-leaf"><span class="in-panel in-panel--top"></span><span class="in-panel in-panel--bot"></span><span class="in-knob"></span></span>
+            </span>
             <span class="in-grain" aria-hidden="true"></span>
             <span class="in-vignette" aria-hidden="true"></span>
-            <span class="in-play"><span class="in-play-ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></span><span class="in-play-txt">Regarder le film</span></span>
           </span>
+          <span class="in-hint"><span class="in-hint-closed">Ouvrir la porte</span><span class="in-hint-open">Regarder le film</span></span>
         </a>
         <dl class="in-credits in-credits--r">
           <div><dt>Format</dt><dd>Vertical 9:16</dd></div>
@@ -612,7 +652,6 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
           </figure>
         </div>
 
-        <p class="pk-note">As-Roi assortis. Une bonne main pour commencer.</p>
         <dl class="hud">
           <div><dt>Format</dt><dd>9:16</dd></div>
           <div><dt>Diffusion</dt><dd>Instagram</dd></div>
@@ -883,6 +922,37 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
     var fallback=function(){var r=document.createRange();r.selectNodeContents(mail);var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Adresse sélectionnée'};
     try{navigator.clipboard.writeText(mail.textContent.trim()).then(done,fallback)}catch(e){fallback()}
   });
+})();
+
+// Films institutionnels : la porte s'ouvre sur le film, puis se referme quand on ferme la vidéo
+(function(){
+  var film=document.querySelector('#institutionnel .inst-film'); if(!film){ return }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dlg=document.getElementById('player'), playing=false, away=false;
+  function closeDoor(){
+    playing=false; away=false;
+    film.classList.remove('is-open');
+    film.setAttribute('aria-label','Ouvrir la porte et regarder le film immobilier');
+  }
+  // 1er clic : la porte s'ouvre (le lien n'est pas suivi). Clic suivant : le film.
+  film.parentNode.addEventListener('click',function(e){
+    if(!film.contains(e.target)){ return }
+    if(film.classList.contains('is-open')){ if(dlg){ playing=true } else { away=true } return }
+    e.preventDefault(); e.stopPropagation();
+    film.classList.add('is-open');
+    film.setAttribute('aria-label','Regarder le film immobilier');
+    // Sur le site, le lecteur s'ouvre tout seul une fois la porte ouverte
+    if(dlg&&film.hasAttribute('data-ig')){ setTimeout(function(){ film.click() }, reduce?0:1250) }
+  },true);
+  if(dlg){
+    // Site : la porte se referme quand on ferme le lecteur
+    dlg.addEventListener('close',function(){ if(playing){ setTimeout(closeDoor, reduce?0:350) } });
+  } else {
+    // Aperçu : le film s'ouvre sur Instagram, la porte se referme quand on revient sur la page
+    var back=function(){ if(away&&!document.hidden){ setTimeout(closeDoor, reduce?0:600) } };
+    document.addEventListener('visibilitychange',back);
+    window.addEventListener('focus',back);
+  }
 })();
 </script>
 </body>
