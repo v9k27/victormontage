@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reels poker · Victor Auriol</title>
+<meta name="description" content="Tous les reels et shorts poker montés par Victor Auriol, monteur vidéo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314161c'/%3E%3Crect x='4' y='13' width='8' height='6' rx='1.5' fill='%23c2a574'/%3E%3Crect x='13' y='13' width='7' height='6' rx='1.5' fill='%23ffd60a'/%3E%3Crect x='21' y='13' width='7' height='6' rx='1.5' fill='%233aae70'/%3E%3Crect x='16' y='6' width='2' height='20' fill='%235b9bff'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://victormontage.fr/poker.html">
+<meta property="og:image" content="https://victormontage.fr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1813">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Big+Shoulders+Display:wght@800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Page « Voir plus » de la partie poker : même tapis vert que la page d'accueil, toutes les vidéos posées sur la table. Les couleurs sont fixes, quel que soit le thème du lecteur. */
+:root{
+  --pk-room:#0b1813; --pk-felt:#13643f; --pk-felt-dark:#0a3f27; --pk-rail:#2a1911;
+  --pk-gold:#e6c56e; --pk-cream:#f6f1e4; --pk-red:#c8102e; --pk-red-soft:#ff6b78; --pk-black:#1c1c1c; --pk-ink:#16130f; --pk-back:#9e1b2a;
+  --pk-muted:rgba(246,241,228,.72); --pk-line:rgba(230,197,110,.28);
+  --f-name:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-cond:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(120% 60% at 50% 0%, #13291f 0%, var(--pk-room) 60%) var(--pk-room);background-repeat:no-repeat;color:var(--pk-cream);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pk-gold);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.gold{color:var(--pk-gold)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .gold{background:linear-gradient(180deg, #f7e2a0 0%, #d9a83e 62%, #b9862b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+
+/* Barre du haut */
+.bar{position:sticky;top:0;z-index:5;background:rgba(7,16,12,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--pk-line)}
+.bar-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;min-height:58px}
+.back,.bar-cta{font-family:var(--f-cond);font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--pk-cream)}
+.back{justify-self:start;display:inline-flex;align-items:center;gap:10px}
+.back span{display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--pk-line);color:var(--pk-gold);transition:background .2s, color .2s}
+.back svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.back:hover span{background:var(--pk-gold);color:var(--pk-ink)}
+.brand{font-family:var(--f-name);font-weight:800;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em;text-decoration:none;white-space:nowrap}
+.bar-cta{justify-self:end;padding:8px 14px;border:1px solid var(--pk-gold);border-radius:999px;color:var(--pk-gold);transition:background .2s, color .2s}
+.bar-cta:hover{background:var(--pk-gold);color:var(--pk-ink)}
+
+/* En-tête */
+.head{display:grid;gap:16px;justify-items:center;text-align:center;max-width:640px;margin:0 auto;padding-block:clamp(48px, 7vw, 92px) clamp(30px, 4vw, 48px)}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-cond);font-weight:700;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--pk-gold)}
+.tag svg{width:12px;height:12px;fill:currentColor}
+.tag svg.red{fill:var(--pk-red-soft)}
+h1{margin:0;font-family:var(--f-cond);font-weight:800;font-size:clamp(56px, 10vw, 136px);line-height:.86;text-transform:uppercase;letter-spacing:.005em}
+.head p{margin:0;font-size:17px;color:rgba(246,241,228,.84);max-width:46ch}
+
+/* La table */
+.table{--r:clamp(28px, 7vw, 96px);--rail:clamp(10px, 1.3vw, 16px);border-radius:var(--r);padding:var(--rail);background:linear-gradient(180deg, #4a2e1d 0%, var(--pk-rail) 55%, #1d110b 100%);box-shadow:0 30px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 0 rgba(0,0,0,.4)}
+.felt{--in:clamp(10px, 1.8vw, 24px);position:relative;overflow:hidden;border-radius:calc(var(--r) - var(--rail));background:radial-gradient(85% 75% at 50% 42%, var(--pk-felt) 0%, var(--pk-felt-dark) 100%);padding:clamp(40px, 6vw, 80px) clamp(14px, 5vw, 72px);box-shadow:inset 0 0 0 2px rgba(230,197,110,.28), inset 0 10px 40px rgba(0,0,0,.45)}
+.felt::before{content:"";position:absolute;inset:var(--in);border:1.5px solid rgba(230,197,110,.3);border-radius:calc(var(--r) - var(--rail) - var(--in));pointer-events:none}
+.felt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.felt > *{position:relative;z-index:1}
+
+/* Les cartes : une carte = un reel */
+.deck{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:clamp(30px, 4vw, 52px) clamp(14px, 3vw, 40px);justify-items:center}
+@media (max-width:900px){.deck{grid-template-columns:repeat(3, minmax(0, 1fr))}}
+@media (max-width:560px){.deck{grid-template-columns:repeat(2, minmax(0, 1fr))}}
+.pk-item{margin:0;display:grid;gap:14px;justify-items:center;align-content:start;width:100%;animation:deal .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i, 0) * 70ms)}
+@keyframes deal{from{opacity:0;transform:translateY(-34px) rotate(-8deg)}to{opacity:1;transform:none}}
+.cap{margin:0;text-align:center;font-family:var(--f-cond);font-weight:700;font-size:15px;line-height:1.25;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,228,.86)}
+.cap small{display:block;font-size:12px;letter-spacing:.18em;color:var(--pk-gold)}
+.card{position:relative;display:block;width:min(100%, 196px);aspect-ratio:63/88;background:var(--pk-cream);color:var(--pk-ink);border-radius:clamp(8px, 1.2vw, 12px);text-decoration:none;box-shadow:0 14px 28px rgba(0,0,0,.45), 0 2px 4px rgba(0,0,0,.3);transform:rotate(var(--rot, 0deg));transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s}
+.deck li:nth-child(4n+1) .card{--rot:-4deg}
+.deck li:nth-child(4n+2) .card{--rot:3deg}
+.deck li:nth-child(4n+3) .card{--rot:-2deg}
+.deck li:nth-child(4n+4) .card{--rot:4deg}
+.card::before{content:"";position:absolute;inset:6%;border:1px solid rgba(22,19,15,.12);border-radius:6px}
+a.card:hover{transform:rotate(0deg) translateY(-12px);box-shadow:0 26px 40px rgba(0,0,0,.55)}
+.card.red{color:var(--pk-red)}
+.idx{position:absolute;display:grid;justify-items:center;gap:2px;line-height:.9}
+.idx b{font-family:var(--f-cond);font-weight:800;font-size:clamp(22px, 3vw, 34px)}
+.idx svg{width:clamp(13px, 1.8vw, 20px);height:clamp(13px, 1.8vw, 20px);fill:currentColor}
+.idx.tl{top:6%;left:8%}
+.idx.br{bottom:6%;right:8%;transform:rotate(180deg)}
+.pip{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:46%;height:auto;aspect-ratio:1;fill:currentColor}
+.pip.k{width:auto;aspect-ratio:auto;font-family:var(--f-cond);font-weight:800;font-size:clamp(54px, 8vw, 100px);line-height:1}
+.play{position:absolute;left:50%;bottom:26%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--f-cond);font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--pk-ink);color:var(--pk-cream);transition:background .2s}
+.play::before{content:"";border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+a.card:hover .play{background:var(--pk-red)}
+
+/* Dos de carte : les places pour les prochaines vidéos */
+.card.back{background-color:var(--pk-back);background-image:repeating-linear-gradient(45deg, rgba(246,241,228,.13) 0 1.5px, transparent 1.5px 11px), repeating-linear-gradient(-45deg, rgba(246,241,228,.13) 0 1.5px, transparent 1.5px 11px);border:clamp(5px, .8vw, 8px) solid var(--pk-cream);color:var(--pk-gold)}
+.card.back::before{inset:5%;border:1px solid rgba(230,197,110,.55);border-radius:4px}
+.emblem{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:44%;aspect-ratio:1;border-radius:50%;background:var(--pk-back);box-shadow:0 0 0 1.5px var(--pk-gold), 0 0 0 6px var(--pk-back), 0 0 0 7.5px rgba(230,197,110,.5)}
+.emblem svg{width:46%;height:46%;fill:currentColor}
+.pk-item.soon .cap{color:var(--pk-muted)}
+
+/* Infos et contact */
+.hud{display:flex;flex-wrap:wrap;justify-content:center;width:max-content;max-width:100%;margin:clamp(40px, 5vw, 60px) auto 0;background:rgba(4,14,9,.62);border-top:2px solid var(--pk-gold);border-radius:4px;overflow:hidden}
+.hud div{display:grid;gap:2px;padding:10px 20px;text-align:left}
+.hud div + div{border-left:1px solid rgba(246,241,228,.12)}
+.hud dt{font-family:var(--f-cond);font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--pk-gold)}
+.hud dd{margin:0;font-family:var(--f-cond);font-weight:700;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+
+.end{display:grid;gap:18px;justify-items:center;text-align:center;padding-block:clamp(64px, 9vw, 112px) clamp(48px, 7vw, 80px)}
+.end h2{margin:0;font-family:var(--f-cond);font-weight:800;font-size:clamp(42px, 7vw, 88px);line-height:.9;text-transform:uppercase}
+.end h2 .gold{white-space:nowrap}
+.end p{margin:0;max-width:48ch;font-size:17px;color:rgba(246,241,228,.84)}
+.mail{margin-top:6px;font-family:var(--f-cond);font-weight:700;font-size:clamp(24px, 4.4vw, 40px);letter-spacing:.02em;overflow-wrap:anywhere;user-select:all}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.btn{font-family:var(--f-cond);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:999px;border:1px solid var(--pk-line);background:transparent;color:var(--pk-cream);cursor:pointer;transition:border-color .2s, background .2s, color .2s}
+.btn:hover{border-color:var(--pk-gold)}
+.btn.solid{background:linear-gradient(180deg, #f2d98c 0%, #d9a83e 100%);border-color:transparent;color:var(--pk-ink)}
+.btn.solid:hover{background:var(--pk-cream)}
+.foot{border-top:1px solid var(--pk-line)}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-block:18px 28px;font-family:var(--f-mono);font-size:11px;color:var(--pk-muted)}
+.foot a{text-decoration:underline;text-decoration-color:var(--pk-line);text-underline-offset:4px}
+.foot a:hover{color:var(--pk-cream)}
+
+@media (max-width:600px){
+  .bar-in{grid-template-columns:auto 1fr auto;min-height:54px}
+  .brand{justify-self:center;font-size:20px}
+  .back b{display:none}
+  .bar-cta{padding:7px 11px;font-size:13px}
+  .hud div{padding:8px 11px}.hud dd{font-size:17px}
+}
+@media (max-width:360px){.brand{display:none}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .pk-item{animation:none}
+  *{transition:none!important}
+}
+
+/* ============ Version site : vraies miniatures et lecteurs ============ */
+button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb .playbtn{z-index:1}
+.thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-card.is-playing,.yt-card.is-playing:hover{transform:none}
+.go{text-decoration:none}
+.go:hover{background:var(--yt-pink);color:var(--yt-white)}
+.player-modal{width:min(440px, calc(100% - 32px));max-height:calc(100% - 32px);padding:0;border:1px solid var(--tl-line);border-radius:12px;background:var(--tl-panel);color:var(--tl-fg);overflow:auto}
+.player-modal::backdrop{background:rgba(8,9,12,.82);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pm-bar{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px 10px 16px;border-bottom:1px solid var(--tl-line);background:var(--tl-head);font-family:var(--f-mono);font-size:11px;color:var(--tl-muted)}
+.pm-bar b{color:var(--tl-fg);font-weight:500}
+.pm-close{font-family:var(--f-mono);font-size:12px;color:var(--tl-fg);background:none;border:1px solid var(--tl-line);border-radius:6px;padding:6px 10px;cursor:pointer}
+.pm-close:hover{border-color:var(--tl-play)}
+.pm-body{display:grid;place-items:center;min-height:240px;padding:12px}
+.pm-body video{display:block;width:100%;max-height:75vh;aspect-ratio:9/16;background:#000;border-radius:6px}
+.pm-body .instagram-media{margin:0 !important;min-width:0 !important;width:100% !important;max-width:100% !important}
+.pm-body > blockquote > a{color:var(--tl-play)}
+.pm-out{display:block;padding:12px 16px;border-top:1px solid var(--tl-line);font-family:var(--f-mono);font-size:12px;color:var(--tl-play);text-decoration:none}
+.pm-out:hover{text-decoration:underline}
+.player-modal{--tl-panel:#1b1e26;--tl-head:#22262f;--tl-line:#2d323d;--tl-fg:#ecebe6;--tl-muted:#8d94a3;--tl-play:#5b9bff}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="s-spade" viewBox="0 0 100 100"><path d="M50 4C50 4 8 38 8 62C8 78 22 88 36 88C42 88 46 86 48 84C46 92 40 96 32 98L68 98C60 96 54 92 52 84C54 86 58 88 64 88C78 88 92 78 92 62C92 38 50 4 50 4Z"/></symbol>
+  <symbol id="s-heart" viewBox="0 0 100 100"><path d="M50 92C20 70 6 52 6 34C6 18 18 8 31 8C40 8 47 13 50 20C53 13 60 8 69 8C82 8 94 18 94 34C94 52 80 70 50 92Z"/></symbol>
+  <symbol id="s-diamond" viewBox="0 0 100 100"><path d="M50 4L88 50L50 96L12 50Z"/></symbol>
+  <symbol id="s-club" viewBox="0 0 100 100"><circle cx="50" cy="30" r="19"/><circle cx="29" cy="58" r="19"/><circle cx="71" cy="58" r="19"/><path d="M45 56C45 78 40 89 31 97L69 97C60 89 55 78 55 56Z"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="back" href="/#poker"><span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M13 8H3.5M7.5 4 3.5 8 7.5 12"/></svg></span><b>Portfolio</b></a>
+    <a class="brand" href="/">Victor Auriol</a>
+    <a class="bar-cta" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="head">
+      <span class="tag"><svg aria-hidden="true"><use href="#s-spade"/></svg><svg class="red" aria-hidden="true"><use href="#s-heart"/></svg>Spécialité poker<svg class="red" aria-hidden="true"><use href="#s-diamond"/></svg><svg aria-hidden="true"><use href="#s-club"/></svg></span>
+      <h1>Cartes<br><span class="gold">sur table</span></h1>
+      <p>Tous les reels et shorts poker que j'ai montés. Cliquez sur une carte pour regarder la vidéo.</p>
+    </div>
+
+    <div class="table">
+      <div class="felt">
+        <ul class="deck">
+          <li class="pk-item" style="--i:0">
+            <a class="card" data-ig aria-haspopup="dialog" href="https://www.instagram.com/reel/Dero2_diNlj/" target="_blank" rel="noopener" aria-label="Regarder le reel poker 1 sur Instagram">
+              <span class="idx tl"><b>A</b><svg><use href="#s-spade"/></svg></span>
+              <svg class="pip"><use href="#s-spade"/></svg>
+              <span class="play">Regarder</span>
+              <span class="idx br"><b>A</b><svg><use href="#s-spade"/></svg></span>
+            </a>
+            <p class="cap">Reel poker #1</p>
+          </li>
+          <li class="pk-item" style="--i:1">
+            <a class="card" data-ig aria-haspopup="dialog" href="https://www.instagram.com/reel/Dc4HN2ngOUT/" target="_blank" rel="noopener" aria-label="Regarder le reel poker 2 sur Instagram">
+              <span class="idx tl"><b>K</b><svg><use href="#s-spade"/></svg></span>
+              <span class="pip k">K</span>
+              <span class="play">Regarder</span>
+              <span class="idx br"><b>K</b><svg><use href="#s-spade"/></svg></span>
+            </a>
+            <p class="cap">Reel poker #2</p>
+          </li>
+          <!-- Places pour les prochains reels : chaque dos de carte sera remplacé par une vraie vidéo -->
+          <li class="pk-item" style="--i:2">
+            <a class="card" data-ig aria-haspopup="dialog" href="https://www.instagram.com/p/DeKaubNAbo0/" target="_blank" rel="noopener" aria-label="Regarder le reel poker 3 sur Instagram">
+              <span class="idx tl"><b>Q</b><svg><use href="#s-spade"/></svg></span>
+              <span class="pip k">Q</span>
+              <span class="play">Regarder</span>
+              <span class="idx br"><b>Q</b><svg><use href="#s-spade"/></svg></span>
+            </a>
+            <p class="cap">Reel poker #3</p>
+          </li>
+          <li class="pk-item" style="--i:3">
+            <a class="card" data-ig aria-haspopup="dialog" href="https://www.instagram.com/reel/DePUZFiigzW/" target="_blank" rel="noopener" aria-label="Regarder le reel poker 4 sur Instagram">
+              <span class="idx tl"><b>J</b><svg><use href="#s-spade"/></svg></span>
+              <span class="pip k">J</span>
+              <span class="play">Regarder</span>
+              <span class="idx br"><b>J</b><svg><use href="#s-spade"/></svg></span>
+            </a>
+            <p class="cap">Reel poker #4</p>
+          </li>
+          <li class="pk-item soon" style="--i:4"><span class="card back"><span class="emblem"><svg aria-hidden="true"><use href="#s-diamond"/></svg></span></span><p class="cap">Reel poker #5<small>Bientôt</small></p></li>
+          <li class="pk-item soon" style="--i:5"><span class="card back"><span class="emblem"><svg aria-hidden="true"><use href="#s-club"/></svg></span></span><p class="cap">Reel poker #6<small>Bientôt</small></p></li>
+          <li class="pk-item soon" style="--i:6"><span class="card back"><span class="emblem"><svg aria-hidden="true"><use href="#s-spade"/></svg></span></span><p class="cap">Reel poker #7<small>Bientôt</small></p></li>
+          <li class="pk-item soon" style="--i:7"><span class="card back"><span class="emblem"><svg aria-hidden="true"><use href="#s-heart"/></svg></span></span><p class="cap">Reel poker #8<small>Bientôt</small></p></li>
+        </ul>
+
+        <dl class="hud">
+          <div><dt>Format</dt><dd>9:16</dd></div>
+          <div><dt>Diffusion</dt><dd>Instagram</dd></div>
+          <div><dt>Rôle</dt><dd>Montage</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap end" id="contact">
+    <h2>Un reel poker <span class="gold">à monter&nbsp;?</span></h2>
+    <p>Envoyez-moi vos rushs, je m'occupe de l'accroche, du rythme et de la tension jusqu'au showdown. Format court&nbsp;: 35 à 90&nbsp;€ par vidéo.</p>
+    <span class="mail" id="mail">contact@victormontage.fr</span>
+    <div class="actions">
+      <button class="btn" type="button" id="copy-mail">Copier l'adresse</button>
+      <a class="btn solid" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contact@victormontage.fr&amp;su=Reel%20poker" target="_blank" rel="noopener">Ouvrir dans Gmail</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>© 2026 Victor Auriol · Monteur vidéo</span><span><a href="/">Retour au portfolio</a> · <a href="/#mentions-legales">Mentions légales</a></span></div></footer>
+
+<!-- Lecteur des reels -->
+<dialog class="player-modal" id="player" aria-label="Lecteur vidéo">
+  <div class="pm-bar"><span><b>Lecteur</b> · Reel</span><button class="pm-close" id="player-close" type="button">Fermer</button></div>
+  <div class="pm-body" id="player-body"></div>
+  <a class="pm-out" id="player-out" href="#" target="_blank" rel="noopener">Ouvrir sur Instagram ↗</a>
+</dialog>
+
+<script>
+(function(){
+  // Miniatures YouTube : repli sur la version standard si la version HD n'existe pas
+  [].slice.call(document.querySelectorAll('.thumb img[data-fallback]')).forEach(function(img){
+    function useFallback(){ if(img.src!==img.dataset.fallback){ img.src=img.dataset.fallback } else { img.remove() } }
+    img.addEventListener('load',function(){ if(img.naturalWidth&&img.naturalWidth<200){ useFallback() } });
+    img.addEventListener('error',useFallback);
+    if(img.complete&&img.naturalWidth&&img.naturalWidth<200){ useFallback() }
+  });
+
+  // Lecture YouTube directement dans la page
+  [].slice.call(document.querySelectorAll('button.thumb[data-yt]')).forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var box=document.createElement('div');
+      box.className=btn.className;
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0&playsinline=1';
+      f.title=btn.getAttribute('aria-label')||'Vidéo YouTube';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen=true;
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      box.appendChild(f);
+      btn.replaceWith(box);
+      var card=box.closest('.yt-card'); if(card){ card.classList.add('is-playing') }
+    });
+  });
+
+  // Titres des vidéos YouTube, chargés automatiquement (le texte de départ reste si ça échoue)
+  [].slice.call(document.querySelectorAll('[data-yt-title]')).forEach(function(el){
+    if(!window.fetch){ return }
+    var url='https://www.youtube.com/watch?v='+el.dataset.ytTitle;
+    fetch('https://noembed.com/embed?url='+encodeURIComponent(url)).then(function(r){ return r.json() }).then(function(d){
+      if(d&&d.title){
+        el.textContent=d.title;
+        var btn=el.closest('.yt-card').querySelector('button[data-yt]');
+        if(btn){ btn.setAttribute('aria-label','Lire la vidéo : '+d.title) }
+      }
+    }).catch(function(){});
+  });
+
+  // Reels : lecteur dans une fenêtre (lecteur Instagram, ou fichier vidéo si data-mp4 est renseigné)
+  var dlg=document.getElementById('player'), body=document.getElementById('player-body'), out=document.getElementById('player-out'), igScript=false;
+  function processIG(){ if(window.instgrm&&window.instgrm.Embeds){ window.instgrm.Embeds.process() } }
+  function openReel(url, mp4){
+    body.innerHTML='';
+    if(mp4){
+      var v=document.createElement('video');
+      v.src=mp4; v.controls=true; v.playsInline=true; v.autoplay=true;
+      body.appendChild(v);
+    } else {
+      var bq=document.createElement('blockquote');
+      bq.className='instagram-media';
+      bq.setAttribute('data-instgrm-permalink',url);
+      bq.setAttribute('data-instgrm-version','14');
+      var a=document.createElement('a');
+      a.href=url; a.target='_blank'; a.rel='noopener'; a.textContent='Voir ce reel sur Instagram';
+      bq.appendChild(a); body.appendChild(bq);
+      if(!igScript){
+        igScript=true;
+        var sc=document.createElement('script');
+        sc.async=true; sc.src='https://www.instagram.com/embed.js'; sc.onload=processIG;
+        document.body.appendChild(sc);
+      } else { processIG() }
+    }
+    out.href=url;
+    if(typeof dlg.showModal==='function'){ dlg.showModal() } else { window.location.href=url }
+  }
+  [].slice.call(document.querySelectorAll('[data-ig]')).forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); openReel(a.getAttribute('href'), a.dataset.mp4) });
+  });
+  dlg.addEventListener('close',function(){ body.innerHTML='' });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg){ dlg.close() } });
+  document.getElementById('player-close').addEventListener('click',function(){ dlg.close() });
+})();
+</script>
+
+<script>
+// Dans l'aperçu Claude, la page s'affiche dans un cadre qui garde la position de défilement de la page d'accueil : on remonte en haut à l'arrivée. Sans effet sur le vrai site.
+(function(){
+  if(window.self===window.top||location.hash){ return }
+  function toTop(){ window.scrollTo(0,0); try{ document.body.scrollIntoView({block:'start'}) }catch(e){ document.body.scrollIntoView(true) } }
+  toTop(); window.addEventListener('load',toTop);
+})();
+</script>
+<script>
+(function(){
+  // Copier l'adresse mail
+  var btn=document.getElementById('copy-mail'),mail=document.getElementById('mail');
+  btn.addEventListener('click',function(){
+    var label="Copier l'adresse";
+    var done=function(){btn.textContent='Adresse copiée';setTimeout(function(){btn.textContent=label},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(mail);var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Adresse sélectionnée'};
+    try{navigator.clipboard.writeText(mail.textContent.trim()).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+</body>
+</html>

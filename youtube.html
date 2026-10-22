@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vidéos YouTube · Victor Auriol</title>
+<meta name="description" content="Toutes les vidéos YouTube montées par Victor Auriol, monteur vidéo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314161c'/%3E%3Crect x='4' y='13' width='8' height='6' rx='1.5' fill='%23c2a574'/%3E%3Crect x='13' y='13' width='7' height='6' rx='1.5' fill='%23ffd60a'/%3E%3Crect x='21' y='13' width='7' height='6' rx='1.5' fill='%233aae70'/%3E%3Crect x='16' y='6' width='2' height='20' fill='%235b9bff'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://victormontage.fr/youtube.html">
+<meta property="og:image" content="https://victormontage.fr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffd60a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=JetBrains+Mono:wght@400;500&family=Lilita+One&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+/* Page « Voir plus » de la partie YouTube : même jaune vif que la page d'accueil, toutes les vidéos en grille de miniatures. Les couleurs sont fixes, quel que soit le thème du lecteur. */
+:root{
+  --yt-bg:#ffd60a; --yt-ink:#141414; --yt-pink:#ff3d8b; --yt-blue:#2b5cff; --yt-white:#ffffff;
+  --yt-muted:rgba(20,20,20,.62);
+  --f-fun:"Lilita One", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --f-name:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --outline:.035em 0 0 var(--yt-ink), -.035em 0 0 var(--yt-ink), 0 .035em 0 var(--yt-ink), 0 -.035em 0 var(--yt-ink), .025em .025em 0 var(--yt-ink), -.025em .025em 0 var(--yt-ink), .025em -.025em 0 var(--yt-ink), -.025em -.025em 0 var(--yt-ink), .07em .08em 0 var(--yt-ink);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background-color:var(--yt-bg);background-image:radial-gradient(rgba(20,20,20,.09) 1.3px, transparent 1.7px);background-size:18px 18px;color:var(--yt-ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yt-ink);outline-offset:4px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+
+/* Barre du haut et bandeau défilant */
+.bar{position:sticky;top:0;z-index:5;background:var(--yt-ink);color:var(--yt-bg)}
+.bar-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;min-height:58px}
+.back{justify-self:start;display:inline-flex;align-items:center;gap:10px;font-family:var(--f-fun);font-size:18px;line-height:1;text-decoration:none}
+.back span{display:inline-grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;background:var(--yt-bg);color:var(--yt-ink);transition:background .2s, color .2s}
+.back svg,.yt-more svg{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.back:hover span{background:var(--yt-pink);color:var(--yt-white)}
+.brand{font-family:var(--f-name);font-weight:800;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em;text-decoration:none;white-space:nowrap;color:var(--yt-white)}
+.bar-cta{justify-self:end;font-family:var(--f-fun);font-size:17px;line-height:1;padding:9px 16px 7px;border-radius:999px;background:var(--yt-pink);color:var(--yt-white);text-decoration:none;transition:background .2s, color .2s}
+.bar-cta:hover{background:var(--yt-bg);color:var(--yt-ink)}
+.ticker{background:var(--yt-ink);color:var(--yt-bg);overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,214,10,.25)}
+.ticker-track{display:inline-flex;animation:tick 32s linear infinite}
+.ticker-track span{font-family:var(--f-fun);font-size:clamp(18px, 2.4vw, 26px);line-height:1;padding:11px 0 9px}
+.ticker-track b{font-weight:400;color:var(--yt-pink);padding:0 .5em}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* En-tête */
+.head{display:grid;gap:20px;justify-items:start;padding-block:clamp(48px, 7vw, 96px) clamp(40px, 5vw, 64px)}
+.stickers{display:flex;flex-wrap:wrap;gap:12px}
+.sticker{display:inline-block;font-family:var(--f-fun);font-size:18px;line-height:1;padding:9px 16px 7px;color:var(--yt-white);border:3px solid var(--yt-ink);border-radius:999px;box-shadow:4px 4px 0 var(--yt-ink)}
+.sticker.pink{background:var(--yt-pink);transform:rotate(-3deg)}
+.sticker.blue{background:var(--yt-blue);transform:rotate(3deg)}
+h1{margin:0;font-family:var(--f-fun);font-weight:400;font-size:clamp(60px, 12vw, 160px);line-height:.9;color:var(--yt-white);text-shadow:var(--outline)}
+h1 span{color:var(--yt-pink)}
+.head p{margin:clamp(10px, 1.8vw, 24px) 0 0;max-width:44ch;font-weight:700;font-size:clamp(17px, 1.6vw, 20px);line-height:1.5}
+
+/* Les vidéos */
+.yt-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:clamp(40px, 4.5vw, 56px) clamp(24px, 3vw, 40px)}
+@media (max-width:960px){.yt-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}}
+@media (max-width:620px){.yt-grid{grid-template-columns:minmax(0, 1fr)}}
+.yt-grid > li{animation:pop .5s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i, 0) * 70ms)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.yt-card{display:grid;gap:16px;text-decoration:none;color:var(--yt-ink);transform:rotate(var(--r, -1.2deg));transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
+.yt-grid > li:nth-child(3n+2) .yt-card{--r:1.3deg}
+.yt-grid > li:nth-child(3n+3) .yt-card{--r:-.6deg}
+a.yt-card:hover{transform:rotate(0) translate(-3px,-3px)}
+.thumb{position:relative;container-type:inline-size;aspect-ratio:16/9;max-width:100%;border:3px solid var(--yt-ink);border-radius:16px;overflow:hidden;box-shadow:8px 8px 0 var(--yt-ink);transition:box-shadow .3s}
+a.yt-card:hover .thumb{box-shadow:12px 12px 0 var(--yt-ink)}
+.t1{background:repeating-conic-gradient(from 0deg at 64% 52%, rgba(255,255,255,.16) 0 9deg, transparent 9deg 18deg), var(--yt-pink)}
+.t2{background:repeating-conic-gradient(from 4deg at 64% 52%, rgba(255,255,255,.13) 0 9deg, transparent 9deg 18deg), var(--yt-blue)}
+.big{position:absolute;left:6%;top:9%;font-family:var(--f-fun);font-size:30px;font-size:clamp(22px, 13cqi, 60px);line-height:.95;color:var(--yt-white);transform:rotate(-4deg);text-shadow:.05em 0 0 var(--yt-ink), -.05em 0 0 var(--yt-ink), 0 .05em 0 var(--yt-ink), 0 -.05em 0 var(--yt-ink), .035em .035em 0 var(--yt-ink), -.035em .035em 0 var(--yt-ink), .035em -.035em 0 var(--yt-ink), -.035em -.035em 0 var(--yt-ink), .08em .09em 0 var(--yt-ink)}
+.t2 .big{color:var(--yt-bg)}
+.t3{background:repeating-conic-gradient(from 2deg at 64% 52%, rgba(255,214,10,.13) 0 9deg, transparent 9deg 18deg), var(--yt-ink)}
+.t3 .big{color:var(--yt-pink)}
+.t3 .playbtn{background:var(--yt-pink)}
+.playbtn{position:absolute;left:64%;top:52%;width:62px;width:clamp(44px, 19cqi, 84px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--yt-ink);border:3px solid var(--yt-white);transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
+.playbtn::after{content:"";position:absolute;left:56%;top:50%;transform:translate(-50%,-50%);border-left:clamp(14px, 5.6cqi, 24px) solid var(--yt-white);border-top:clamp(9px, 3.5cqi, 15px) solid transparent;border-bottom:clamp(9px, 3.5cqi, 15px) solid transparent}
+a.yt-card:hover .playbtn{transform:translate(-50%,-50%) scale(1.12)}
+.yt-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 14px}
+.yt-title{font-family:var(--f-fun);font-size:clamp(21px, 2.2vw, 27px);line-height:1.1}
+.go{font-weight:800;font-size:13px;line-height:1;padding:10px 15px;border-radius:999px;background:var(--yt-ink);color:var(--yt-bg);transition:background .2s, color .2s}
+a.yt-card:hover .go{background:var(--yt-pink);color:var(--yt-white)}
+
+/* Places pour les prochaines vidéos : une miniature « en cours d'export » */
+.thumb.soon{display:grid;place-items:center;background:repeating-linear-gradient(-45deg, rgba(20,20,20,.05) 0 12px, transparent 12px 24px), var(--yt-white)}
+.soon-badge{font-family:var(--f-fun);font-size:24px;font-size:clamp(20px, 9cqi, 36px);line-height:1;padding:.36em .7em .26em;background:var(--yt-bg);border:3px solid var(--yt-ink);border-radius:999px;box-shadow:4px 4px 0 var(--yt-ink);transform:rotate(-4deg)}
+.soon-lbl{position:absolute;left:12px;bottom:16px;font-family:var(--f-mono);font-size:11px;font-weight:500;color:var(--yt-muted)}
+.soon-bar{position:absolute;left:0;right:0;bottom:0;height:7px;background:rgba(20,20,20,.12)}
+.soon-bar i{display:block;height:100%;width:var(--w, 40%);background:var(--yt-pink)}
+.is-soon .go{background:transparent;color:var(--yt-muted);box-shadow:inset 0 0 0 2px rgba(20,20,20,.3)}
+.is-soon .yt-title{color:var(--yt-muted)}
+
+/* Infos */
+.facts{list-style:none;display:flex;flex-wrap:wrap;gap:12px;margin:clamp(48px, 6vw, 72px) 0 0;padding:0}
+.facts li{display:inline-flex;align-items:baseline;gap:8px;font-weight:800;font-size:15px;line-height:1;padding:11px 16px 10px;background:var(--yt-white);border:3px solid var(--yt-ink);border-radius:999px;box-shadow:4px 4px 0 var(--yt-ink)}
+.facts b{font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--yt-muted)}
+
+/* Écran de fin : contact */
+.endscreen{margin-block:clamp(64px, 9vw, 112px) clamp(48px, 7vw, 80px);padding:clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);display:grid;gap:18px;justify-items:center;text-align:center;background:var(--yt-ink);color:var(--yt-white);border-radius:24px;box-shadow:10px 10px 0 var(--yt-pink)}
+.endscreen h2{margin:0;font-family:var(--f-fun);font-weight:400;font-size:clamp(40px, 6.6vw, 84px);line-height:.95;color:var(--yt-bg)}
+.endscreen h2 span{color:var(--yt-pink);white-space:nowrap}
+.endscreen p{margin:0;max-width:50ch;font-size:17px;color:rgba(255,255,255,.82)}
+.mail{margin-top:6px;font-family:var(--f-fun);font-size:clamp(24px, 4.4vw, 40px);line-height:1.1;overflow-wrap:anywhere;user-select:all}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn{font-family:var(--f-fun);font-size:18px;line-height:1;text-decoration:none;padding:13px 22px 11px;border-radius:999px;border:3px solid var(--yt-white);background:transparent;color:var(--yt-white);cursor:pointer;transition:background .2s, color .2s, border-color .2s}
+.btn:hover{background:var(--yt-white);color:var(--yt-ink)}
+.btn.solid{background:var(--yt-pink);border-color:var(--yt-pink)}
+.btn.solid:hover{background:var(--yt-bg);border-color:var(--yt-bg);color:var(--yt-ink)}
+.foot{border-top:3px solid var(--yt-ink)}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-block:18px 28px;font-family:var(--f-mono);font-size:11px;color:var(--yt-ink)}
+.foot a{text-decoration:underline;text-underline-offset:4px}
+.foot a:hover{color:var(--yt-pink)}
+
+@media (max-width:620px){.yt-card{--r:-.6deg}.yt-grid > li:nth-child(n) .yt-card{--r:-.6deg}.yt-grid > li:nth-child(2n) .yt-card{--r:.7deg}}
+@media (max-width:600px){
+  .bar-in{grid-template-columns:auto 1fr auto;min-height:54px}
+  .brand{justify-self:center;font-size:20px}
+  .back b{display:none}
+  .bar-cta{padding:8px 13px 6px;font-size:16px}
+}
+@media (max-width:360px){.brand{display:none}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .ticker-track,.yt-grid > li{animation:none}
+  *{transition:none!important}
+}
+
+/* ============ Version site : vraies miniatures et lecteurs ============ */
+button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb .playbtn{z-index:1}
+.thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-card.is-playing,.yt-card.is-playing:hover{transform:none}
+.go{text-decoration:none}
+.go:hover{background:var(--yt-pink);color:var(--yt-white)}
+.player-modal{width:min(440px, calc(100% - 32px));max-height:calc(100% - 32px);padding:0;border:1px solid var(--tl-line);border-radius:12px;background:var(--tl-panel);color:var(--tl-fg);overflow:auto}
+.player-modal::backdrop{background:rgba(8,9,12,.82);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pm-bar{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px 10px 16px;border-bottom:1px solid var(--tl-line);background:var(--tl-head);font-family:var(--f-mono);font-size:11px;color:var(--tl-muted)}
+.pm-bar b{color:var(--tl-fg);font-weight:500}
+.pm-close{font-family:var(--f-mono);font-size:12px;color:var(--tl-fg);background:none;border:1px solid var(--tl-line);border-radius:6px;padding:6px 10px;cursor:pointer}
+.pm-close:hover{border-color:var(--tl-play)}
+.pm-body{display:grid;place-items:center;min-height:240px;padding:12px}
+.pm-body video{display:block;width:100%;max-height:75vh;aspect-ratio:9/16;background:#000;border-radius:6px}
+.pm-body .instagram-media{margin:0 !important;min-width:0 !important;width:100% !important;max-width:100% !important}
+.pm-body > blockquote > a{color:var(--tl-play)}
+.pm-out{display:block;padding:12px 16px;border-top:1px solid var(--tl-line);font-family:var(--f-mono);font-size:12px;color:var(--tl-play);text-decoration:none}
+.pm-out:hover{text-decoration:underline}
+.player-modal{--tl-panel:#1b1e26;--tl-head:#22262f;--tl-line:#2d323d;--tl-fg:#ecebe6;--tl-muted:#8d94a3;--tl-play:#5b9bff}
+.yt-card:not(.is-soon):not(.is-playing):hover{transform:rotate(0) translate(-3px,-3px)}
+.yt-card:not(.is-soon):not(.is-playing):hover .thumb{box-shadow:12px 12px 0 var(--yt-ink)}
+button.thumb:hover .playbtn{transform:translate(-50%,-50%) scale(1.12)}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="back" href="/#youtube"><span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M13 8H3.5M7.5 4 3.5 8 7.5 12"/></svg></span><b>Portfolio</b></a>
+    <a class="brand" href="/">Victor Auriol</a>
+    <a class="bar-cta" href="#contact">Contact</a>
+  </div>
+</header>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b></span>
+    <span>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b>JUMP CUT<b>✦</b>ZOOM<b>✦</b>B-ROLL<b>✦</b>SOUS-TITRES<b>✦</b>SFX<b>✦</b>MUSIQUE<b>✦</b>RYTHME<b>✦</b></span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <div class="stickers"><span class="sticker pink">YouTube</span><span class="sticker blue">16:9</span></div>
+    <h1>La <span>playlist</span></h1>
+    <p>Toutes les vidéos YouTube que j'ai montées, du dérush à l'export. Cliquez sur une miniature pour regarder.</p>
+  </div>
+
+  <ul class="yt-grid">
+    <li style="--i:0">
+      <div class="yt-card">
+        <button class="thumb t1" type="button" data-yt="ieZ8iZa_krU" aria-label="Lire la vidéo YouTube 1"><img src="https://i.ytimg.com/vi/ieZ8iZa_krU/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/ieZ8iZa_krU/hqdefault.jpg" alt="" loading="lazy"><span class="playbtn" aria-hidden="true"></span></button>
+        <div class="yt-meta"><span class="yt-title" data-yt-title="ieZ8iZa_krU">Vidéo YouTube #1</span><a class="go" href="https://www.youtube.com/watch?v=ieZ8iZa_krU" target="_blank" rel="noopener">YouTube ↗</a></div>
+      </div>
+    </li>
+    <li style="--i:1">
+      <div class="yt-card">
+        <button class="thumb t2" type="button" data-yt="cgCC-ch1MLA" aria-label="Lire la vidéo YouTube 2"><img src="https://i.ytimg.com/vi/cgCC-ch1MLA/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/cgCC-ch1MLA/hqdefault.jpg" alt="" loading="lazy"><span class="playbtn" aria-hidden="true"></span></button>
+        <div class="yt-meta"><span class="yt-title" data-yt-title="cgCC-ch1MLA">Vidéo YouTube #2</span><a class="go" href="https://www.youtube.com/watch?v=cgCC-ch1MLA" target="_blank" rel="noopener">YouTube ↗</a></div>
+      </div>
+    </li>
+    <li style="--i:2">
+      <div class="yt-card">
+        <button class="thumb t3" type="button" data-yt="gjIC4UhtJ0k" aria-label="Lire la vidéo YouTube 3"><img src="https://i.ytimg.com/vi/gjIC4UhtJ0k/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/gjIC4UhtJ0k/hqdefault.jpg" alt="" loading="lazy"><span class="playbtn" aria-hidden="true"></span></button>
+        <div class="yt-meta"><span class="yt-title" data-yt-title="gjIC4UhtJ0k">Vidéo YouTube #3</span><a class="go" href="https://www.youtube.com/watch?v=gjIC4UhtJ0k" target="_blank" rel="noopener">YouTube ↗</a></div>
+      </div>
+    </li>
+    <!-- Places pour les prochaines vidéos : chaque miniature « bientôt » sera remplacée par une vraie vidéo -->
+    <li style="--i:3"><div class="yt-card is-soon"><div class="thumb soon" aria-hidden="true"><span class="soon-badge">Bientôt</span><span class="soon-lbl">Export en cours…</span><span class="soon-bar" style="--w:41%"><i></i></span></div><div class="yt-meta"><span class="yt-title">Vidéo YouTube #4</span><span class="go">Bientôt</span></div></div></li>
+    <li style="--i:4"><div class="yt-card is-soon"><div class="thumb soon" aria-hidden="true"><span class="soon-badge">Bientôt</span><span class="soon-lbl">Export en cours…</span><span class="soon-bar" style="--w:83%"><i></i></span></div><div class="yt-meta"><span class="yt-title">Vidéo YouTube #5</span><span class="go">Bientôt</span></div></div></li>
+    <li style="--i:5"><div class="yt-card is-soon"><div class="thumb soon" aria-hidden="true"><span class="soon-badge">Bientôt</span><span class="soon-lbl">Export en cours…</span><span class="soon-bar" style="--w:22%"><i></i></span></div><div class="yt-meta"><span class="yt-title">Vidéo YouTube #6</span><span class="go">Bientôt</span></div></div></li>
+  </ul>
+
+  <ul class="facts">
+    <li><b>Format</b>16:9</li>
+    <li><b>Durée</b>10 à 25 min</li>
+    <li><b>Pour</b>Vlogs, best-of</li>
+    <li><b>Rôle</b>Montage de A à Z</li>
+  </ul>
+
+  <section class="endscreen" id="contact">
+    <h2>Une vidéo YouTube <span>à monter&nbsp;?</span></h2>
+    <p>Envoyez-moi vos rushs : dérush, montage, sous-titres, musique et SFX, jusqu'à l'export. Format YouTube&nbsp;: 300 à 600&nbsp;€ par vidéo.</p>
+    <span class="mail" id="mail">contact@victormontage.fr</span>
+    <div class="actions">
+      <button class="btn" type="button" id="copy-mail">Copier l'adresse</button>
+      <a class="btn solid" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contact@victormontage.fr&amp;su=Vid%C3%A9o%20YouTube" target="_blank" rel="noopener">Ouvrir dans Gmail</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>© 2026 Victor Auriol · Monteur vidéo</span><span><a href="/">Retour au portfolio</a> · <a href="/#mentions-legales">Mentions légales</a></span></div></footer>
+
+<!-- Lecteur des reels -->
+<dialog class="player-modal" id="player" aria-label="Lecteur vidéo">
+  <div class="pm-bar"><span><b>Lecteur</b> · Reel</span><button class="pm-close" id="player-close" type="button">Fermer</button></div>
+  <div class="pm-body" id="player-body"></div>
+  <a class="pm-out" id="player-out" href="#" target="_blank" rel="noopener">Ouvrir sur Instagram ↗</a>
+</dialog>
+
+<script>
+(function(){
+  // Miniatures YouTube : repli sur la version standard si la version HD n'existe pas
+  [].slice.call(document.querySelectorAll('.thumb img[data-fallback]')).forEach(function(img){
+    function useFallback(){ if(img.src!==img.dataset.fallback){ img.src=img.dataset.fallback } else { img.remove() } }
+    img.addEventListener('load',function(){ if(img.naturalWidth&&img.naturalWidth<200){ useFallback() } });
+    img.addEventListener('error',useFallback);
+    if(img.complete&&img.naturalWidth&&img.naturalWidth<200){ useFallback() }
+  });
+
+  // Lecture YouTube directement dans la page
+  [].slice.call(document.querySelectorAll('button.thumb[data-yt]')).forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var box=document.createElement('div');
+      box.className=btn.className;
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0&playsinline=1';
+      f.title=btn.getAttribute('aria-label')||'Vidéo YouTube';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen=true;
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      box.appendChild(f);
+      btn.replaceWith(box);
+      var card=box.closest('.yt-card'); if(card){ card.classList.add('is-playing') }
+    });
+  });
+
+  // Titres des vidéos YouTube, chargés automatiquement (le texte de départ reste si ça échoue)
+  [].slice.call(document.querySelectorAll('[data-yt-title]')).forEach(function(el){
+    if(!window.fetch){ return }
+    var url='https://www.youtube.com/watch?v='+el.dataset.ytTitle;
+    fetch('https://noembed.com/embed?url='+encodeURIComponent(url)).then(function(r){ return r.json() }).then(function(d){
+      if(d&&d.title){
+        el.textContent=d.title;
+        var btn=el.closest('.yt-card').querySelector('button[data-yt]');
+        if(btn){ btn.setAttribute('aria-label','Lire la vidéo : '+d.title) }
+      }
+    }).catch(function(){});
+  });
+
+  // Reels : lecteur dans une fenêtre (lecteur Instagram, ou fichier vidéo si data-mp4 est renseigné)
+  var dlg=document.getElementById('player'), body=document.getElementById('player-body'), out=document.getElementById('player-out'), igScript=false;
+  function processIG(){ if(window.instgrm&&window.instgrm.Embeds){ window.instgrm.Embeds.process() } }
+  function openReel(url, mp4){
+    body.innerHTML='';
+    if(mp4){
+      var v=document.createElement('video');
+      v.src=mp4; v.controls=true; v.playsInline=true; v.autoplay=true;
+      body.appendChild(v);
+    } else {
+      var bq=document.createElement('blockquote');
+      bq.className='instagram-media';
+      bq.setAttribute('data-instgrm-permalink',url);
+      bq.setAttribute('data-instgrm-version','14');
+      var a=document.createElement('a');
+      a.href=url; a.target='_blank'; a.rel='noopener'; a.textContent='Voir ce reel sur Instagram';
+      bq.appendChild(a); body.appendChild(bq);
+      if(!igScript){
+        igScript=true;
+        var sc=document.createElement('script');
+        sc.async=true; sc.src='https://www.instagram.com/embed.js'; sc.onload=processIG;
+        document.body.appendChild(sc);
+      } else { processIG() }
+    }
+    out.href=url;
+    if(typeof dlg.showModal==='function'){ dlg.showModal() } else { window.location.href=url }
+  }
+  [].slice.call(document.querySelectorAll('[data-ig]')).forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); openReel(a.getAttribute('href'), a.dataset.mp4) });
+  });
+  dlg.addEventListener('close',function(){ body.innerHTML='' });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg){ dlg.close() } });
+  document.getElementById('player-close').addEventListener('click',function(){ dlg.close() });
+})();
+</script>
+
+<script>
+// Dans l'aperçu Claude, la page s'affiche dans un cadre qui garde la position de défilement de la page d'accueil : on remonte en haut à l'arrivée. Sans effet sur le vrai site.
+(function(){
+  if(window.self===window.top||location.hash){ return }
+  function toTop(){ window.scrollTo(0,0); try{ document.body.scrollIntoView({block:'start'}) }catch(e){ document.body.scrollIntoView(true) } }
+  toTop(); window.addEventListener('load',toTop);
+})();
+</script>
+<script>
+(function(){
+  // Copier l'adresse mail
+  var btn=document.getElementById('copy-mail'),mail=document.getElementById('mail');
+  btn.addEventListener('click',function(){
+    var label="Copier l'adresse";
+    var done=function(){btn.textContent='Adresse copiée';setTimeout(function(){btn.textContent=label},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(mail);var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Adresse sélectionnée'};
+    try{navigator.clipboard.writeText(mail.textContent.trim()).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+</body>
+</html>

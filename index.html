@@ -322,6 +322,12 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .go{font-weight:800;font-size:13px;line-height:1;padding:10px 15px;border-radius:999px;background:var(--yt-ink);color:var(--yt-bg);transition:background .2s, color .2s}
 .yt-card:hover .go{background:var(--yt-pink);color:var(--yt-white)}
 @media (max-width:620px){.yt-card{--r:-.6deg}.yt-card:nth-child(2){--r:.7deg}}
+.yt-more-row{margin:clamp(48px, 6vw, 72px) 0 0;text-align:center}
+.yt-more{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-fun);font-size:clamp(20px, 2.2vw, 24px);line-height:1;padding:9px 9px 9px 26px;border:3px solid var(--yt-ink);border-radius:999px;background:var(--yt-white);color:var(--yt-ink);text-decoration:none;box-shadow:6px 6px 0 var(--yt-ink);transform:rotate(-1.5deg);transition:transform .3s cubic-bezier(.3,1.5,.5,1), box-shadow .3s}
+.yt-more span{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--yt-pink);color:var(--yt-white);border:3px solid var(--yt-ink)}
+.yt-more svg{display:block;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.yt-more:hover{transform:rotate(0) translate(-3px,-3px);box-shadow:9px 9px 0 var(--yt-ink)}
+.yt-more:focus-visible{outline:3px solid var(--yt-ink);outline-offset:5px}
 
 /* ============ 4. POKER : tapis vert ============ */
 .pk{background:radial-gradient(120% 70% at 50% 0%, #13291f 0%, var(--pk-room) 65%);color:var(--pk-cream)}
@@ -364,6 +370,13 @@ a.clip:focus-visible{outline:2px solid var(--tl-fg);outline-offset:1px}
 .hud div + div{border-left:1px solid rgba(246,241,228,.12)}
 .hud dt{font-family:var(--f-cond);font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--pk-gold)}
 .hud dd{margin:0;font-family:var(--f-cond);font-weight:700;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+.pk-more-row{margin:26px 0 0}
+.pk-more{display:inline-flex;align-items:center;gap:12px;padding:12px 14px 12px 24px;border-radius:999px;background:linear-gradient(180deg, #f2d98c 0%, #d9a83e 100%);color:var(--pk-ink);font-family:var(--f-cond);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 22px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.5);transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s}
+.pk-more span{display:inline-grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:var(--pk-ink);color:var(--pk-gold);transition:transform .25s}
+.pk-more svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pk-more:hover{transform:translateY(-3px);box-shadow:0 16px 28px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.5)}
+.pk-more:hover span{transform:translateX(3px)}
+.pk-more:focus-visible{outline-color:var(--pk-gold);outline-offset:4px}
 .chips{width:110px;height:100px;pointer-events:none}
 .chips.c1{right:6%;top:11%}
 .chips.c2{left:6%;bottom:13%}
@@ -614,6 +627,7 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
         <div class="yt-meta"><span class="yt-title" data-yt-title="gjIC4UhtJ0k">Vidéo YouTube #2</span><a class="go" href="https://www.youtube.com/watch?v=gjIC4UhtJ0k" target="_blank" rel="noopener">YouTube ↗</a></div>
       </div>
     </div>
+    <p class="yt-more-row"><a class="yt-more" href="youtube.html">Voir plus de vidéos<span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a></p>
   </div>
 </section>
 
@@ -657,6 +671,7 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
           <div><dt>Diffusion</dt><dd>Instagram</dd></div>
           <div><dt>Rôle</dt><dd>Montage</dd></div>
         </dl>
+        <p class="pk-more-row"><a class="pk-more" href="poker.html">Voir plus de reels<span aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a></p>
       </div>
     </div>
   </div>
@@ -922,6 +937,13 @@ button.thumb{display:block;width:100%;padding:0;cursor:pointer;font:inherit;colo
     var fallback=function(){var r=document.createRange();r.selectNodeContents(mail);var s=window.getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Adresse sélectionnée'};
     try{navigator.clipboard.writeText(mail.textContent.trim()).then(done,fallback)}catch(e){fallback()}
   });
+})();
+
+// Dans l'aperçu Claude, la page s'affiche dans un cadre : au retour d'une page « Voir plus », on se replace sur la bonne partie. Sans effet sur le vrai site.
+(function(){
+  if(window.self===window.top||!location.hash){ return }
+  function toPart(){ var el=document.getElementById(location.hash.slice(1)); if(!el){ return } try{ el.scrollIntoView({block:'start',behavior:'instant'}) }catch(e){ el.scrollIntoView(true) } }
+  toPart(); window.addEventListener('load',toPart);
 })();
 
 // Films institutionnels : la porte s'ouvre sur le film, puis se referme quand on ferme la vidéo
